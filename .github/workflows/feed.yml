@@ -30,6 +30,17 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
 
+      # A read-only workflow token makes the final git push die with exit 128 and
+      # a message about Username/403 that never mentions the actual setting.
+      - name: Check the token may push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(gh api /repos/${{ github.repository }} --jq .permissions.push)" != "true" ]; then
+            echo "::error::the workflow token cannot push. Fix: Settings -> Actions -> General -> Workflow permissions -> Read and write permissions"
+            exit 1
+          fi
+
       - run: dart pub get
 
       - name: Download the release's zips
