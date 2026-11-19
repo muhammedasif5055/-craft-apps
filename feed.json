@@ -5,17 +5,17 @@
       "id": "clock",
       "releases": [
         {
-          "version": "1.0.0",
+          "version": "1.0.1",
           "track": "stable",
-          "published_at": "2026-11-19T02:15:34.823613Z",
+          "published_at": "2026-11-19T02:58:41.283157Z",
           "notes_markdown": "",
           "assets": [
             {
               "os": "windows",
               "arch": "x64",
-              "url": "https://github.com/muhammedasif5055/-craft-apps/releases/download/v1.0.0/clock-1.0.0-windows-x64.zip",
-              "sha256": "1545769969eb1922b4abaa3213b350aab91e40027aa54c1b52a9a75c4209b262",
-              "size_bytes": 10867517,
+              "url": "https://github.com/muhammedasif5055/-craft-apps/releases/download/v1.0.1/clock-1.0.1-windows-x64.zip",
+              "sha256": "6eaa223525fc34bb6e383fd82eb18c7e76dc63935fbaa2c385b8b0fbab61f725",
+              "size_bytes": 10867500,
               "executable": "craft_clock.exe"
             }
           ]
