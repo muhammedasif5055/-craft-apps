@@ -1,0 +1,7 @@
+# zips and notes the feed workflow downloads
+/assets/
+/notes.md
+*.zip
+
+# dart pub get
+/.dart_tool/

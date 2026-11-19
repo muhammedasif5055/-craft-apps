@@ -1,0 +1,54 @@
+# The only writer of feed.json. Runs when a release is published, or by hand for
+# a tag whose zips are already attached.
+name: feed
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag with the zips attached, e.g. v1.2.3
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+
+      - run: dart pub get
+
+      - name: Download the release's zips
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          mkdir -p assets
+          gh release download "$TAG" --pattern '*.zip' --dir assets --clobber
+          gh release view "$TAG" --json body --jq .body > notes.md
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Merge into feed.json
+        run: dart run tool/merge_feed.dart --tag "$TAG" --notes notes.md
+
+      - name: Commit the feed
+        run: |
+          if git diff --quiet -- feed.json; then
+            echo "feed is already current"
+            exit 0
+          fi
+          git config user.name 'craft-apps bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add feed.json
+          git commit -m "feed: $TAG"
+          git push

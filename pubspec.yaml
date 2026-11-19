@@ -1,0 +1,10 @@
+name: craft_apps
+description: Feed builder for the Craft Hub launcher's public app catalogue.
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  archive: ^4.7.1
+  crypto: ^3.0.8

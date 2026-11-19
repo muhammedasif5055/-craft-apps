@@ -1,0 +1,17 @@
+{
+  "name": "PhotoCraft",
+  "tagline": "Image editing",
+  "kind": "official",
+  "publisher": "Craft Hub",
+  "color": [47, 123, 245],
+  "ink_light": [26, 91, 196],
+  "ink_dark": [127, 176, 255],
+  "details": {
+    "headline": "Layers, masks and type, on your machine.",
+    "about": "One sentence the launcher shows in the app sheet.",
+    "features": [
+      { "title": "Layers and masks", "text": "One line about the feature." }
+    ],
+    "shots": []
+  }
+}
