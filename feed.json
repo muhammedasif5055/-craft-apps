@@ -51,6 +51,22 @@
               "executable": "craft_clock.exe"
             }
           ]
+        },
+        {
+          "version": "1.0.3",
+          "track": "stable",
+          "published_at": "2026-11-19T16:05:27.036919Z",
+          "notes_markdown": "",
+          "assets": [
+            {
+              "os": "windows",
+              "arch": "x64",
+              "url": "https://github.com/muhammedasif5055/-craft-apps/releases/download/v1.0.3/clock-1.0.3-windows-x64.zip",
+              "sha256": "5653954549a706c6ebf2d4805f01c18e4e207d556ee57238134b0b87884270ed",
+              "size_bytes": 10867494,
+              "executable": "craft_clock.exe"
+            }
+          ]
         }
       ],
       "name": "Clock"
